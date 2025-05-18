@@ -4,10 +4,10 @@ const {
   register,
   login,
   logout,
-  welocome,
+  me,
 } = require("../controllers/auth.controller");
 
-router.get("/", welocome);
+router.get("/me", me);
 router.post("/register", register);
 router.post("/login", login);
 router.post("/logout", logout);

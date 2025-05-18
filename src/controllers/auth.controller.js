@@ -62,6 +62,15 @@ exports.logout = async (req, res) => {
     .status(200)
     .json({ message: "Logged out successfully" });
 };
-exports.welocome = async (req, res) => {
-  res.status(200).json({ message: "Welcome" });
+
+exports.me = (req, res) => {
+  const token = req.cookies.token; // read token from cookie
+  if (!token) return res.status(401).json({ message: "Not authenticated" });
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    res.json({ id: decoded.id, message: "User authenticated" });
+  } catch {
+    res.status(401).json({ message: "Invalid token" });
+  }
 };
