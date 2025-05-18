@@ -62,3 +62,6 @@ exports.logout = async (req, res) => {
     .status(200)
     .json({ message: "Logged out successfully" });
 };
+exports.welocome = async (req, res) => {
+  res.status(200).json({ message: "Welcome" });
+};
