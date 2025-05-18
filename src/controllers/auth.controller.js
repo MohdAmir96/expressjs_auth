@@ -16,8 +16,8 @@ exports.register = async (req, res) => {
     const exists = await User.findOne({ email });
     if (exists) return res.status(409).json({ message: "User already exists" });
 
-    const hashedPassword = await bcrypt.hash(password, 10); // Hash password
-    const user = await User.create({ email, password: hashedPassword });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = await User.create({ email, password: hashedPassword }); // ✅ use hashedPassword
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
@@ -28,7 +28,6 @@ exports.register = async (req, res) => {
       .status(201)
       .json({ message: "Registration successful" });
   } catch (err) {
-    console.log(err);
     res.status(500).json({ error: "Server error" });
   }
 };
