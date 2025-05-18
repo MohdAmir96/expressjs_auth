@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require("cookie-parser"); // << Add this
 const authRoutes = require("./routes/auth.routes");
 
 const app = express();
@@ -26,6 +27,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(cookieParser()); // << Add this BEFORE routes
 
 // Parse incoming JSON requests
 app.use(express.json());
