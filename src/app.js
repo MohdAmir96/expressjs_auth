@@ -11,7 +11,7 @@ const allowedOrigins = [
   "http://localhost:3001",
   "http://127.0.0.1:5173",
   // "https://expressjs-auth.onrender.com",
-  "https://naukrprovider.netlify.app/login",
+  "https://naukrprovider.netlify.app/",
 ];
 
 // Dynamic CORS configuration
